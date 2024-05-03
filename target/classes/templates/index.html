@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bonus Assignment</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-reset {
+            background-color: #dc3545;
+        }
+
+        .btn-reset:hover {
+            background-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+<h1>Bonus Assignment CIS 530!</h1>
+<hr />
+<h2>Search Company Database</h2>
+<!-- Search Input -->
+<form action="/" method="post" th:object="${search}">
+    <input type="text" name="lastName" placeholder="Search by last name...">
+    <button type="submit" class="btn">Search</button>
+    <input type="reset"  onclick="location.href='/reset'" value="Reset" class="btn btn-reset" >
+</form>
+<!--<form action="/reset" method="get">-->
+<!--    <button type="reset" class="btn btn-reset">Reset</button>-->
+<!--</form>-->
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>SSN</th>
+        <th>First Name</th>
+        <th>Middle Initial</th>
+        <th>Last Name</th>
+        <th>Birth Date</th>
+        <th>Address</th>
+        <th>Sex</th>
+        <th>Salary</th>
+<!--        <th>Supervisor SSN</th>-->
+<!--        <th>Department Name</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Employee : ${Employees}">
+        <td th:text="${Employee.ssn}">Id</td>
+        <td th:text="${Employee.firstName}">First Name</td>
+        <td th:text="${Employee.middleInitial}">Middle Initial</td>
+        <td th:text="${Employee.lastName}">Last Name</td>
+        <td th:text="${Employee.birthDate}">Birth Date</td>
+        <td th:text="${Employee.address}">Address</td>
+        <td th:text="${Employee.sex}">Sex</td>
+        <td th:text="${Employee.salary}">Salary</td>
+<!--        <td th:text="${Employee.supervisor.getSsn()}">Supervisor SSN</td>-->
+<!--        <td th:text="${Employee.department.getDepartmentName()}">Department Name</td>-->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
